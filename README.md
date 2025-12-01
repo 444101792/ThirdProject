@@ -50,10 +50,21 @@ Full Diagram: [📄 UML Diagram File](CLASS_DIAGRAM.png)
 
 ## 🎨 Wireframes
 
-Visual blueprints for the application design can be found here: [📁 Wireframes Folder](docs/wireframes/)
 ![Screenshot_2025-12-01_at_9 09 07_PM](https://github.com/user-attachments/assets/bc70bb66-a3ac-4adf-ad7d-7b488da04503)
+
+
+
+
 ![Screenshot_2025-12-01_at_9 08 35_PM](https://github.com/user-attachments/assets/d1f73f9d-919e-41e0-8b88-40e758e812c3)
+
+
+
+
 ![Screenshot_2025-12-01_at_9 08 18_PM](https://github.com/user-attachments/assets/b27f98ca-8d18-4283-8944-7d5df73947a1)
+
+
+
+
 ![Screenshot_2025-12-01_at_9 07 45_PM](https://github.com/user-attachments/assets/7706e741-f4e1-46f1-8360-7a9cf4903884)
 
 
