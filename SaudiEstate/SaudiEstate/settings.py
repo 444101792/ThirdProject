@@ -58,7 +58,7 @@ ROOT_URLCONF = 'SaudiEstate.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,5 +122,9 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
