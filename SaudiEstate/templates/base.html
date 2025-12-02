@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudi Estate</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <div class="nav-left">
+                <span class="nav-logo">SaudiEstate</span>
+            </div>
+
+            <ul class="nav-center">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Properties</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <a class="btn-login" href="#">Login</a>
+            </div>
+        </nav>
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <script>
+        /* Hide navbar on scroll down, show on scroll up */
+        let lastScroll = 0;
+        const navbarWrapper = document.querySelector(".navbar-wrapper");
+
+        window.addEventListener("scroll", () => {
+            let current = window.pageYOffset;
+
+            if (current > lastScroll) {
+                navbarWrapper.style.top = "-120px";
+            } else {
+                navbarWrapper.style.top = "20px";
+            }
+
+            lastScroll = current;
+        });
+    </script>
+
+</body>
+
+</html>
