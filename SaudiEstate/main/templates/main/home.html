@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block content %}
 
@@ -23,14 +23,40 @@
 </section>
 
 
-<section class="overview-section">
-    <h2>About SaudiEstate</h2>
-    <p>
-        SaudiEstate is a modern real estate platform designed to help users discover premium homes,
-        explore investment opportunities, and connect with trusted property owners.
-        We focus on quality, transparency, and seamless digital experience.
-    </p>
+<section class="about-preview">
+
+    <div class="about-container">
+
+        <!-- Left Side Images – side-by-side layout -->
+        <div class="about-images">
+            <img src="{% static 'images/about1.jpg' %}" class="about-img img-left" alt="SaudiEstate">
+            <img src="{% static 'images/about2.jpg' %}" class="about-img img-right" alt="SaudiEstate">
+        </div>
+
+        <!-- Right Side Text -->
+        <div class="about-text">
+            <p class="about-tag">ABOUT SAUDIESTATE</p>
+
+            <h2 class="about-title">
+                The Future of Modern Real-Estate<br>
+                Built with Trust & Transparency
+            </h2>
+
+            <p class="about-desc">
+                SaudiEstate is a modern real estate platform designed to help users discover premium homes,
+                explore investment opportunities, and connect with trusted and verified property owners.
+            </p>
+
+            <a href="{% url 'main:about' %}" class="about-btn">
+                LEARN MORE →
+            </a>
+        </div>
+
+    </div>
+
 </section>
+
+
 
 
 <!-- Search Bar -->
@@ -48,16 +74,16 @@
         View All Properties
     </a>
 
-
     <div class="properties-grid">
+
         {% for property in properties %}
             {% include 'properties/card.html' %}
+
         {% empty %}
-            <p>No featured properties available at the moment.</p>
+        <p>No featured properties available at the moment.</p>
         {% endfor %}
     </div>
 
 </section>
-
 
 {% endblock content %}
