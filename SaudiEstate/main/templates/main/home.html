@@ -77,29 +77,11 @@
     <div class="properties-grid">
 
         {% for property in properties %}
-        <div class="property-card">
-            {% if property.main_image %}
-            <img src="{{ property.main_image.url }}" alt="{{ property.title }}" class="property-image"
-                style="width: 100%; height: 200px; object-fit: cover;">
-            {% else %}
-            <div class="property-image"
-                style="height: 200px; background: #eee; display:flex; align-items:center; justify-content:center;">No
-                Image</div>
-            {% endif %}
+            {% include 'properties/card.html' %}
 
-            <div class="property-info" style="padding: 15px;">
-                <p class="price" style="color: #009688; font-weight: bold;">{{ property.price }} SAR</p>
-                <h3 class="type" style="margin: 5px 0; font-size: 1.1rem;">{{ property.title }}</h3>
-                <p class="details text-muted">
-                    📍 {{ property.city }} | 🛏️ {{ property.rooms }} bds | 🛁 {{ property.bathrooms }} ba
-                </p>
-                <a href="#" class="btn btn-sm btn-outline-dark mt-2" style="border-radius: 20px;">View Details</a>
-            </div>
-        </div>
         {% empty %}
         <p>No featured properties available at the moment.</p>
         {% endfor %}
-
     </div>
 
 </section>

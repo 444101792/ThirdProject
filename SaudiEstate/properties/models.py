@@ -13,11 +13,29 @@ class Property(models.Model):
         ('apartment', 'Apartment'),
         ('land', 'Land'),
     )
+    CITIES = [
+       ('Riyadh', 'Riyadh'),
+       ('Jeddah', 'Jeddah'),
+       ('Dammam', 'Dammam'),
+       ('Khobar', 'Khobar'),
+       ('Makkah', 'Makkah'),
+       ('Madina', 'Madina'),
+       ('Abha', 'Abha'),
+       ('Tabuk', 'Tabuk'),
+       ('Qassim', 'Qassim'),
+       ('Hail', 'Hail'),
+       ('Najran', 'Najran'),
+       ('Jazan', 'Jazan'),
+       ('Buraidah', 'Buraidah'),
+       ('Al-Ahsa', 'Al-Ahsa'),
+       ('Taif', 'Taif'),
+       ('Baha', 'Baha')
+    ]
 
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='properties', null=True, blank=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    city = models.CharField(max_length=100)
+    city = models.CharField(max_length=100, choices=CITIES)
     district = models.CharField(max_length=100)
     location = models.CharField(max_length=300, default='')
     price = models.DecimalField(max_digits=12, decimal_places=2)
