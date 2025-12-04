@@ -71,11 +71,11 @@
                 </h4>
                 <div class="owner-phone">
                     <i class="fa-solid fa-phone"></i> 
-                    <span dir="ltr">{{property.owner.country_code}}{{property.owner.phone_number|default:"No number" }}</span>
+                    <span dir="ltr">{{property.owner.phone_number|default:"No number" }}</span>
                 </div>
             </div>
             
-            <a href="https://wa.me/{{property.owner.country_code}}{{ property.owner.phone_number }}" target="_blank" class="whatsapp-icon-btn">
+            <a href="https://wa.me/{{ property.owner.phone_number }}" target="_blank" class="whatsapp-icon-btn">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
         </div>
