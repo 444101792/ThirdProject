@@ -20,7 +20,7 @@ class User(AbstractUser):
        ('Taif', 'Taif'),
        ('Baha', 'Baha')
     ]
-        
+        national_id = models.CharField(max_length=20, unique=True, null=True, blank=True)
         phone_number = models.CharField(max_length=20, unique=True, null=True, blank=True)
         country_code = models.CharField(max_length=10, default="+966")
         city = models.CharField(max_length=100, choices=CITIES, null=True, blank=True)

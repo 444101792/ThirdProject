@@ -31,6 +31,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
 .nav-left,
@@ -196,6 +197,28 @@ html {
     color: #666;
     font-size: 1.2rem;
 }
+
+.fav-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    color: #ff4d4d;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.fav-btn:hover {
+    transform: scale(1.1);
+}
+
+
 
 .property-info {
     padding: 15px 18px;
@@ -737,6 +760,19 @@ textarea::placeholder {
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-card {
 .btn-card{
     display: inline-flex;
     align-items: center;
@@ -790,9 +826,19 @@ textarea::placeholder {
     transition: 0.2s;
 }
 
-.prop-breadcrumb a:hover { color: #009688; }
-.prop-breadcrumb span { margin: 0 8px; color: #ccc; }
-.prop-breadcrumb .current { color: #333; font-weight: 500; }
+.prop-breadcrumb a:hover {
+    color: #009688;
+}
+
+.prop-breadcrumb span {
+    margin: 0 8px;
+    color: #ccc;
+}
+
+.prop-breadcrumb .current {
+    color: #333;
+    font-weight: 500;
+}
 
 .prop-gallery {
     display: grid;
@@ -844,7 +890,7 @@ textarea::placeholder {
     font-weight: 600;
     font-size: 0.9rem;
     color: #333;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .placeholder-img {
@@ -882,7 +928,9 @@ textarea::placeholder {
     font-size: 1.1rem;
 }
 
-.prop-stats i { margin-right: 8px; }
+.prop-stats i {
+    margin-right: 8px;
+}
 
 .action-buttons {
     display: flex;
@@ -905,17 +953,18 @@ textarea::placeholder {
     min-width: 140px;
 }
 
-.btn-action i { margin-right: 8px; font-size: 1.2rem; }
+.btn-action i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
 
 .btn-call {
     background-color: #E74C3C; 
 }
-.btn-call:hover { background-color: #c0392b; }
 
 .btn-whatsapp {
     background-color: #58D072; 
 }
-.btn-whatsapp:hover { background-color: #46b45d; }
 
 .content-wrapper {
     max-width: 900px; 
@@ -1010,7 +1059,7 @@ textarea::placeholder {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .default-avatar {
@@ -1075,6 +1124,7 @@ textarea::placeholder {
         flex-direction: column;
         align-items: flex-start;
     }
+
     .owner-card-display {
         width: 100%;
         justify-content: flex-start;
@@ -1082,39 +1132,39 @@ textarea::placeholder {
 }
 
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 9999; 
-  padding-top: 50px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.95); 
-  backdrop-filter: blur(5px);
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
-  position: relative;
-  margin: auto;
-  padding: 0;
-  width: 90%;
-  max-width: 1000px; 
-  height: 80vh; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mySlides {
-  display: none;
-  width: 100%;
-  text-align: center;
+    display: none;
+    width: 100%;
+    text-align: center;
 }
 
 .mySlides img {
-    max-height: 85vh; 
+    max-height: 85vh;
     width: auto !important;
     max-width: 100%;
     object-fit: contain;
@@ -1122,45 +1172,45 @@ textarea::placeholder {
 }
 
 .close {
-  color: white;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 35px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 10000;
-  transition: 0.3s;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    transition: 0.3s;
 }
 
 .close:hover,
 .close:focus {
-  color: #999;
-  text-decoration: none;
-  cursor: pointer;
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .prev,
 .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-  background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+    right: 0;
+    border-radius: 3px 0 0 3px;
 }
 
 .prev {
@@ -1169,16 +1219,16 @@ textarea::placeholder {
 
 .prev:hover,
 .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: -30px; 
-  left: 0;
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: -30px;
+    left: 0;
 }
 
 .map-link {
@@ -1220,12 +1270,40 @@ textarea::placeholder {
     color: #999;
 }
 
-.card-info { padding: 15px; }
-.card-price { color: #009688; font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; }
-.card-title { font-size: 1rem; color: #333; margin: 0 0 10px 0; font-weight: 600; }
-.card-meta { display: flex; gap: 15px; color: #777; font-size: 0.9rem; margin-bottom: 10px; }
-.card-meta span i { margin-right: 5px; }
-.card-location { font-size: 0.85rem; color: #999; }
+.card-info {
+    padding: 15px;
+}
+
+.card-price {
+    color: #009688;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: #333;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.card-meta {
+    display: flex;
+    gap: 15px;
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.card-meta span i {
+    margin-right: 5px;
+}
+
+.card-location {
+    font-size: 0.85rem;
+    color: #999;
+}
 
 .form-section-title {
     color: #0d3c3c;

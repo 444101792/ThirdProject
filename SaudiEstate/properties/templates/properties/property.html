@@ -6,9 +6,13 @@
 {% block content %}
 <div class="property-detail-container">
 
+
+
+
+
     <div class="prop-breadcrumb">
-        <a href="{% url 'main:home' %}"><i class="fa-solid fa-house"></i></a> 
-        <span>›</span> 
+        <a href="{% url 'main:home' %}"><i class="fa-solid fa-house"></i></a>
+        <span>›</span>
         <a href="#">{{ property.get_property_type_display }}</a>
         <span>›</span>
         <a href="#">{{ property.city }}</a>
@@ -16,14 +20,17 @@
         <span class="current">{{ property.title }}</span>
     </div>
 
+
+
+
     <div class="prop-gallery">
-       <div class="gallery-main" onclick="openModal(); currentSlide(1)" style="cursor: pointer;">
+        <div class="gallery-main" onclick="openModal(); currentSlide(1)" style="cursor: pointer;">
             {% if property.main_image %}
             <img src="{{ property.main_image.url }}" alt="{{ property.title }}">
             {% else %}
             <div class="placeholder-img">No Image</div>
             {% endif %}
-            
+
             <div class="cam-badge">
                 <i class="fa-solid fa-camera"></i> {{ property.images.count|add:"1" }}
             </div>
@@ -41,8 +48,8 @@
         </div>
     </div>
 
-   <div class="prop-header-bar">
-        
+    <div class="prop-header-bar">
+
         <div class="price-info">
             <h2>SAR {{ property.price }}</h2>
             <div class="prop-stats">
@@ -51,13 +58,27 @@
                 <span><i class="fa-solid fa-ruler-combined"></i> {{ property.area }} sqm</span>
             </div>
         </div>
-        
+
+        <a href="{% url 'properties:toggle_favorite' property.pk %}" class="fav-btn">
+            <span class="material-icons">
+                {% if is_favorited %}
+                favorite
+                {% else %}
+                favorite_border
+                {% endif %}
+            </span>
+        </a>
+
+
+
+
+
         <div class="owner-card-display">
             <div class="owner-avatar">
                 {% if property.owner.profile_image %}
-                    <img src="{{ property.owner.profile_image.url }}" alt="{{ property.owner.username }}">
+                <img src="{{ property.owner.profile_image.url }}" alt="{{ property.owner.username }}">
                 {% else %}
-                    <div class="default-avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="default-avatar"><i class="fa-solid fa-user"></i></div>
                 {% endif %}
             </div>
 
@@ -65,16 +86,16 @@
                 <span class="listed-by">Listed by</span>
                 <h4 class="owner-name">
                     {{ property.owner.first_name }} {{ property.owner.last_name }}
-                    {% if property.owner.is_property_owner %} 
-                        <i class="fa-solid fa-circle-check text-success" title="Verified"></i>
+                    {% if property.owner.is_property_owner %}
+                    <i class="fa-solid fa-circle-check text-success" title="Verified"></i>
                     {% endif %}
                 </h4>
                 <div class="owner-phone">
-                    <i class="fa-solid fa-phone"></i> 
+                    <i class="fa-solid fa-phone"></i>
                     <span dir="ltr">{{property.owner.phone_number|default:"No number" }}</span>
                 </div>
             </div>
-            
+
             <a href="https://wa.me/{{ property.owner.phone_number }}" target="_blank" class="whatsapp-icon-btn">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
@@ -84,7 +105,7 @@
 
     <div class="content-wrapper">
         <h3 class="section-heading">Property details</h3>
-        
+
         <div class="details-grid">
             <div class="detail-item">
                 <i class="fa-regular fa-building detail-icon"></i>
@@ -110,7 +131,7 @@
                     <span class="value">{{ property.city }}</span>
                 </div>
             </div>
-            
+
             <div class="detail-item">
                 <i class="fa-solid fa-map-pin detail-icon"></i>
                 <div class="detail-text">
@@ -119,7 +140,8 @@
                 </div>
             </div>
             {% if property.location %}
-            <div class="detail-item" style="grid-column: span 2;"> <i class="fa-solid fa-map-location-dot detail-icon" style="color: #4285F4;"></i>
+            <div class="detail-item" style="grid-column: span 2;"> <i class="fa-solid fa-map-location-dot detail-icon"
+                    style="color: #4285F4;"></i>
                 <div class="detail-text w-100">
                     <span class="label">Location</span>
                     <a href="{{ property.location }}" target="_blank" class="map-link">
@@ -164,79 +186,108 @@
         <div class="description-text">
             {{ property.description|linebreaks }}
         </div>
-        
+
     </div>
 
 </div>
 <div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
 
-    {% if property.main_image %}
-    <div class="mySlides">
-      <div class="numbertext">1 / {{ property.images.count|add:"1" }}</div>
-      <img src="{{ property.main_image.url }}" style="width:100%">
+        {% if property.main_image %}
+        <div class="mySlides">
+            <div class="numbertext">1 / {{ property.images.count|add:"1" }}</div>
+            <img src="{{ property.main_image.url }}" style="width:100%">
+        </div>
+        {% endif %}
+
+        {% for img in property.images.all %}
+        <div class="mySlides">
+            <div class="numbertext">{{ forloop.counter|add:"1" }} / {{ property.property.images.count|add:"1" }}</div>
+            <img src="{{ img.image.url }}" style="width:100%">
+        </div>
+        {% endfor %}
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    {% endif %}
-
-    {% for img in property.images.all %}
-    <div class="mySlides">
-      <div class="numbertext">{{ forloop.counter|add:"1" }} / {{ property.property.images.count|add:"1" }}</div>
-      <img src="{{ img.image.url }}" style="width:100%">
-    </div>
-    {% endfor %}
-
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  </div>
 </div>
 {% if related_properties %}
-    <div class="related-section">
-        <h3 class="section-heading">You might also like</h3>
-        <div class="properties-grid">
-            {% for prop in related_properties %}
-                {% include 'properties/card.html' with property=prop %}
-            {% endfor %}
-        </div>
+<div class="related-section">
+    <h3 class="section-heading">You might also like</h3>
+    <div class="properties-grid">
+        {% for prop in related_properties %}
+        {% include 'properties/card.html' with property=prop %}
+        {% endfor %}
     </div>
-    {% endif %}
+</div>
+
+
+
+{% endif %}
 <script>
     function openModal() {
-      document.getElementById("myModal").style.display = "block";
-      document.body.style.overflow = "hidden";
+        document.getElementById("myModal").style.display = "block";
+        document.body.style.overflow = "hidden";
     }
-    
+
     function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-      document.body.style.overflow = "auto";
+        document.getElementById("myModal").style.display = "none";
+        document.body.style.overflow = "auto";
     }
-    
+
     var slideIndex = 1;
     showSlides(slideIndex);
-    
+
     function plusSlides(n) {
-      showSlides(slideIndex += n);
+        showSlides(slideIndex += n);
     }
-    
+
     function currentSlide(n) {
-      showSlides(slideIndex = n);
+        showSlides(slideIndex = n);
     }
-    
+
     function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      slides[slideIndex-1].style.display = "block";
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
     }
-    
-    document.addEventListener('keydown', function(event) {
+
+    document.addEventListener('keydown', function (event) {
         if (event.key === "Escape") {
             closeModal();
         }
     });
 </script>
+
+<script>
+    function toggleFavorite(event, propertyId) {
+        event.preventDefault();
+        const favIcon = document.getElementById(`fav-icon-${propertyId}`);
+
+        fetch(`/properties/favorite/${propertyId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'added') {
+                    favIcon.innerHTML = '<i class="material-icons" style="color:red;">favorite</i>';
+                } else if (data.status === 'removed') {
+                    favIcon.innerHTML = '<i class="material-icons">favorite_border</i>';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+</script>
+
 {% endblock %}
