@@ -1,4 +1,4 @@
-/* ================= ABOUT HERO ================= */
+
 
 .about-hero {
     position: relative;
@@ -11,7 +11,7 @@
     overflow: hidden;
 }
 
-/* Dark overlay like ROSHN */
+
 .about-hero-overlay {
     position: absolute;
     inset: 0;
@@ -19,7 +19,7 @@
     backdrop-filter: blur(1px);
 }
 
-/* Text container */
+
 .about-hero-content {
     position: relative;
     text-align: center;
@@ -28,7 +28,7 @@
     animation: fadeUp 1.3s ease forwards;
 }
 
-/* Breadcrumb */
+
 .about-breadcrumb {
     font-size: 14px;
     letter-spacing: 1px;
@@ -36,7 +36,7 @@
     opacity: 0.85;
 }
 
-/* Main title */
+
 .about-title {
     font-size: 4rem;
     font-weight: 300;
@@ -46,11 +46,11 @@
 .about-title span {
     font-weight: 600;
     color: #00c7a6;
-    /* لون خاص جميل */
+
 }
 
 
-/* ===== Animation ===== */
+
 
 @keyframes fadeUp {
     0% {
@@ -65,7 +65,7 @@
 }
 
 
-/* ===== VISION SECTION ===== */
+
 .vision-section {
     display: flex;
     align-items: center;
@@ -101,7 +101,7 @@
 }
 
 
-/* ===== STORY SECTION ===== */
+
 .story-section {
     text-align: center;
     margin: 100px 0;
@@ -137,7 +137,7 @@
 }
 
 
-/* ===== VALUES SECTION ===== */
+
 .values-grid {
     display: flex;
     justify-content: center;
@@ -174,7 +174,7 @@
 }
 
 
-/* ===== CTA ===== */
+
 .cta-section {
     text-align: center;
     margin: 90px 0;
@@ -200,7 +200,7 @@
 }
 
 
-/* ===== Animations ===== */
+
 @keyframes fadeUp {
     from {
         opacity: 0;

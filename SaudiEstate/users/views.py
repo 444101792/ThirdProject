@@ -10,14 +10,14 @@ def register(request):
 
     if request.method == 'POST':
 
-        # ----- Basic fields -----
+
         username = request.POST.get('username')
         email = request.POST.get('email')
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         city = request.POST.get('city')
 
-        # ----- Country Code + Phone -----
+
         country_code = request.POST.get('country_code')
         phone_local = request.POST.get('phone_number')
 
@@ -26,11 +26,11 @@ def register(request):
         else:
             full_phone = phone_local
 
-        # ----- Password -----
+
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
 
-        # ----- Validations -----
+
         if password != confirm_password:
             messages.error(request, "Passwords do not match!")
             return redirect('users:register')
@@ -48,7 +48,7 @@ def register(request):
             return redirect('users:register')
 
         try:
-            # ----- Create user -----
+
             user = User.objects.create_user(
                 username=username,
                 email=email,
@@ -56,8 +56,6 @@ def register(request):
                 first_name=first_name,
                 last_name=last_name
             )
-
-            # Extra fields
             user.city = city
             user.country_code = country_code
             user.phone_number = full_phone

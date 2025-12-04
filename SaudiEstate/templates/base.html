@@ -16,7 +16,7 @@
 
 
 
-    <!-- NAVBAR -->
+
     <div class="navbar-wrapper">
         <nav class="navbar">
 
@@ -27,19 +27,19 @@
                 {% endfor %}
             </div>
             {% endif %}
-            <!-- Left -->
+
             <div class="nav-left">
                 <a href="{% url 'main:home' %}" class="nav-logo">SaudiEstate</a>
             </div>
 
-            <!-- Center -->
+
             <ul class="nav-center">
                 <li><a href="{% url 'main:home' %}">Home</a></li>
                 <li><a href="#">Properties</a></li>
                 <li><a href="{% url 'main:about' %}">About</a></li>
             </ul>
 
-            <!-- Right -->
+
             <div class="nav-right">
                 <a href="{% url 'properties:add_property' %}" class="btn-add-property">
                     <i class="fa-solid fa-plus"></i> Add Property
@@ -61,7 +61,7 @@
     {% block content %}{% endblock %}
 
     <script>
-        /* Hide navbar on scroll down, show on scroll up */
+
         let lastScroll = 0;
         const navbarWrapper = document.querySelector(".navbar-wrapper");
 
@@ -79,7 +79,7 @@
     </script>
 
     <script>
-        // Auto-hide messages after 3 seconds
+
         setTimeout(function () {
             const alerts = document.querySelectorAll('.alert');
             alerts.forEach(alert => {
@@ -88,7 +88,7 @@
 
                 setTimeout(() => {
                     alert.remove();
-                }, 600); // Wait for fade-out transition
+                }, 600); 
             });
         }, 3000);
     </script>
