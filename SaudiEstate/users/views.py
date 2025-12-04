@@ -20,6 +20,7 @@ def register(request):
         city = request.POST.get('city')
         country_code = request.POST.get('country_code')
         phone_local = request.POST.get('phone_number')
+        national_id = request.POST.get('national_id')
 
         if country_code and phone_local:
             full_phone = f"{country_code}{phone_local}"

@@ -8,4 +8,7 @@ urlpatterns = [
     path('<int:pk>/favorite/', views.toggle_favorite, name='toggle_favorite'),
     path('favorites/remove/<int:fav_id>/', views.remove_favorite, name='remove_favorite'),
     path('add/', views.add_property, name='add_property'),
+    path('dashboard/', views.admin_dashboard, name='admin_dashboard'),
+    path('verify/<int:pk>/<str:action>/', views.verify_property, name='verify_property'),
+    path('all/', views.all_properties, name='all_properties'),
 ]
