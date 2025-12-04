@@ -13,6 +13,13 @@
 
             <form method="POST" class="auth-form">
                 {% csrf_token %}
+
+
+                <div class="form-group">
+                    <label>National ID</label>
+                    <input type="text" name="national_id" placeholder="Enter your National ID" required>
+                </div>
+
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" name="username" placeholder="Choose a username" required>
@@ -61,7 +68,6 @@
                 </div>
 
                 <div class="form-row">
-                    <!-- Country Code -->
                     <div class="form-group">
                         <label>Country Code</label>
                         <select name="country_code" id="countryCode">
@@ -72,11 +78,9 @@
                             <option value="+20">🇪🇬 +20 Egypt</option>
                             <option value="+1">🇺🇸 +1 USA</option>
                             <option value="+44">🇬🇧 +44 UK</option>
-                            <!-- ولو تبي اضيف لك كل دول العالم جاهز -->
                         </select>
                     </div>
 
-                    <!-- Phone number -->
                     <div class="form-group">
                         <label>Phone Number</label>
                         <input type="text" name="phone_number" placeholder="5xxxxxxxx" required>

@@ -13,6 +13,7 @@ class Property(models.Model):
         ('apartment', 'Apartment'),
         ('land', 'Land'),
     )
+
     CITIES = [
        ('Riyadh', 'Riyadh'),
        ('Jeddah', 'Jeddah'),
@@ -50,9 +51,14 @@ class Property(models.Model):
     building_license = models.FileField(upload_to='media/properties/documents/', blank=True, null=True)
     verification_status = models.CharField(max_length=20, choices=VERIFICATION_STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
+    deed_number = models.CharField(max_length=50, unique=True, null=True, blank=True)
+
+    def is_favorited_by(self, user):
+        return self.favorited_by.filter(user=user).exists()
 
     def __str__(self):
         return self.title
+
 
 class PropertyImage(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
@@ -60,3 +66,15 @@ class PropertyImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.property.title}"
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorites')
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='favorited_by')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'property')
+
+    def __str__(self):
+        return f"{self.user.username} → {self.property.title}"
