@@ -1,19 +1,24 @@
 <div class="property-card">
     <a href="{% url 'properties:detail' property.pk %}" style="text-decoration: none; color: inherit;">
         {% if property.main_image %}
-            <img src="{{ property.main_image.url }}" alt="{{ property.title }}" class="property-image">
+        <img src="{{ property.main_image.url }}" alt="{{ property.title }}" class="property-image">
         {% else %}
-            <div class="property-image placeholder">No Image</div>
+        <div class="property-image placeholder">No Image</div>
         {% endif %}
-        
+
         <div class="property-info">
             <p class="price">{{ property.price }} SAR</p>
             <h3 class="type">{{ property.title|truncatechars:25 }}</h3>
             <p class="details text-muted">
                 📍 {{ property.city }} | 🛏️ {{ property.rooms }} | 🛁 {{ property.bathrooms }}
             </p>
-            
+
             <span class="btn-card">View Details</span>
+            {% if request.user.is_authenticated and request.user == property.owner %}
+            <a class="edit-btn" href="{% url 'properties:edit_property' property.pk %}">Edit</a>
+            {% elif request.user.is_staff %}
+            <a class="edit-btn" href="{% url 'properties:edit_property' property.pk %}">Edit</a>
+            {% endif %} 
         </div>
     </a>
 </div>

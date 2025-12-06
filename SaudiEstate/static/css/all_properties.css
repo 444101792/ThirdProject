@@ -1,0 +1,77 @@
+.filter-bar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #f8f9f9;
+    border-radius: 10px;
+}
+
+.filter-bar select,
+.filter-bar button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #d2d2d2;
+    font-size: 14px;
+}
+
+.filter-bar button {
+    background: #007f6e;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-bar button:hover {
+    background: #006b5b;
+}
+
+.fav-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.edit-form-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.edit-form-container label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+    color: #0f5f4f;
+}
+
+.edit-form-container input,
+.edit-form-container textarea,
+.edit-form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.edit-form-container button {
+    background: #0f8f7c;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.edit-form-container button:hover {
+    background: #0c6d5e;
+}

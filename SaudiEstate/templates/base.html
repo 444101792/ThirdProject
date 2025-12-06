@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saudi Estate</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/all_properties.css' %}">
 </head>
 
 <body>
@@ -20,45 +23,61 @@
 
 
     <div class="navbar-wrapper">
-        <nav class="navbar">
+    <nav class="navbar">
 
-            {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                {% endfor %}
-            </div>
-            {% endif %}
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
-            <div class="nav-left">
-                <a href="{% url 'main:home' %}" class="nav-logo">SaudiEstate</a>
-            </div>
+        <div class="nav-left">
+            <a href="{% url 'main:home' %}" class="nav-logo">SaudiEstate</a>
+        </div>
 
+        <ul class="nav-center">
+            <li><a href="{% url 'main:home' %}">Home</a></li>
+            <li><a href="{% url 'properties:all_properties' %}">Properties</a></li>
+            <li><a href="{% url 'main:about' %}">About</a></li>
+        </ul>
 
-            <ul class="nav-center">
-                <li><a href="{% url 'main:home' %}">Home</a></li>
-                <li><a href="#">Properties</a></li>
-                <li><a href="{% url 'main:about' %}">About</a></li>
-            </ul>
-
-
-            <div class="nav-right">
-                <a href="{% url 'properties:add_property' %}" class="btn-add-property">
-                    <i class="fa-solid fa-plus"></i> Add Property
+        <div class="nav-right">
+            
+            {% if user.is_authenticated %}
+                
+                {% if user.is_staff %}
+                <a href="{% url 'properties:admin_dashboard' %}" class="btn-dashboard" title="Admin Dashboard">
+                    <i class="fa-solid fa-user-shield"></i>
                 </a>
-
-                {% if user.is_authenticated %}
-                <a href="{% url 'users:profile' %}" class="btn-login">My Profile</a>
-                <a href="{% url 'users:logout' %}" class="btn-login">Logout</a>
-                <h3>Welcome, {{ user.username }}</h3>
-                {% else %}
-                <a href="{% url 'users:login' %}" class="btn-login">Login</a>
                 {% endif %}
 
-            </div>
+                <a href="{% url 'properties:add_property' %}" class="btn-add-property">
+                    <i class="fa-solid fa-plus"></i> <span class="btn-text">Add Property</span>
+                </a>
 
-        </nav>
-    </div>
+                <div class="user-menu">
+                    <span class="welcome-text">Hi, {{ user.first_name|default:user.username }}</span>
+                    <a href="{% url 'users:profile' %}" class="btn-circle" title="Profile">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <a href="{% url 'users:logout' %}" class="btn-circle logout" title="Logout">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+
+            {% else %}
+                <a href="{% url 'properties:add_property' %}" class="btn-add-property">
+                    <i class="fa-solid fa-plus"></i> <span class="btn-text">Add Property</span>
+                </a>
+                <a href="{% url 'users:login' %}" class="btn-login">Login</a>
+            {% endif %}
+
+        </div>
+
+    </nav>
+</div>
 
 
     {% block content %}{% endblock %}

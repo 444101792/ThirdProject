@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+    <div class="dashboard-container">
+        <h2 class="dash-title"><i class="fa-solid fa-user-shield"></i> Property Verification Dashboard</h2>
+        
+        {% if properties %}
+        <div class="table-responsive">
+            <table class="dash-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Property</th>
+                        <th>Owner</th>
+                        <th>Deed Number</th>
+                        <th>Documents</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for property in properties %}
+                    <tr>
+                        <td>{{ property.created_at|date:"M d, Y" }}</td>
+                        <td>
+                            <div class="prop-cell">
+                                <img src="{{ property.main_image.url }}" alt="img">
+                                <div>
+                                    <span class="p-title">{{ property.title }}</span>
+                                    <span class="p-price">{{ property.price }} SAR</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>@{{ property.owner.username }}</td>
+                        <td>{{ property.deed_number|default:"N/A" }}</td>
+                        <td>
+                            <div class="doc-links">
+                                <a href="{{ property.title_deed.url }}" target="_blank" class="doc-btn"><i class="fa-solid fa-file-contract"></i> Deed</a>
+                                <a href="{{ property.ownership_proof.url }}" target="_blank" class="doc-btn"><i class="fa-solid fa-id-card"></i> Proof</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-btns">
+                                <a href="{% url 'properties:verify_property' property.pk 'approve' %}" class="btn-approve">
+                                    <i class="fa-solid fa-check"></i> Approve
+                                </a>
+                                <a href="{% url 'properties:verify_property' property.pk 'reject' %}" class="btn-reject">
+                                    <i class="fa-solid fa-xmark"></i> Reject
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fa-solid fa-clipboard-check"></i>
+            <p>No pending properties to review.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
