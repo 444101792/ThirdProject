@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Property - {{ property.title }}{% endblock %}
+
+{% block content %}
+
+<div class="edit-form-container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label>Title</label>
+        <input type="text" name="title" value="{{ property.title }}">
+
+        <label>Description</label>
+        <textarea name="description">{{ property.description }}</textarea>
+
+        <label>Area (m²)</label>
+        <input type="number" name="area" value="{{ property.area }}" required>
+
+        <label>Rooms</label>
+        <input type="number" name="rooms" value="{{ property.rooms }}" required>
+
+        <label>Bathrooms</label>
+        <input type="number" name="bathrooms" value="{{ property.bathrooms }}" required>
+
+        <label>Age</label>
+        <input type="number" name="age" value="{{ property.age }}" required>
+
+        <label>District</label>
+        <input type="text" name="district" value="{{ property.district }}" required>
+
+        <label>City</label>
+        <select name="city">
+            <option value="Riyadh" {% if property.city == "Riyadh" %}selected{% endif %}>Riyadh</option>
+            <option value="Jeddah" {% if property.city == "Jeddah" %}selected{% endif %}>Jeddah</option>
+            <option value="Dammam" {% if property.city == "Dammam" %}selected{% endif %}>Dammam</option>
+            <option value="Khobar" {% if property.city == "Khobar" %}  selected{% endif %}>Khobar</option>
+            <option value="Makkah" {% if property.city == "Makkah" %}selected{% endif %}>Makkah</option>
+            <option value="Madina" {% if property.city == "Madina" %} selected{% endif %}>Madina</option>
+            <option value="Abha" {% if  property.city == "Abha" %} selected{% endif %}>Abha</option>
+            <option value="Tabuk" {% if property.city == "Tabuk" %} selected{% endif %}>Tabuk</option>  
+            <option value="Qassim" {% if property.city == "Qassim" %} selected{% endif %}>Qassim</option>
+            <option value="Hail" {% if property.city == "Hail" %} selected{% endif %}>Hail</option>
+            <option value="Najran" {% if property.city == "Najran" %} selected{% endif %}>Najran</option>
+            <option value="Jazan" {% if property.city == "Jazan" %} selected{% endif %}>Jazan</option>
+            <option value="Buraidah" {% if property.city == "Buraidah" %} selected{% endif %}>Buraidah</option>
+            <option value="Al-Ahsa" {% if property.city == "Al-Ahsa" %} selected{% endif %}>Al-Ahsa</option>
+            <option value="Taif" {% if property.city == "Taif" %} selected{% endif %}>Taif</option>
+            <option value="Baha" {% if property.city == "Baha" %} selected{% endif %}>Baha</option>
+
+        </select>
+       
+        <label>Google Maps Link</label>
+        <input type="url" name="location" value="{{ property.location }}">
+
+
+
+
+
+        <label>Price</label>
+        <input type="number" name="price" value="{{ property.price }}">
+
+        <label>Purpose</label>
+        <select name="purpose">
+            <option value="sale" {% if property.purpose == "sale" %}selected{% endif %}>For Sale</option>
+            <option value="rent" {% if property.purpose == "rent" %}selected{% endif %}>For Rent</option>
+        </select>
+
+        <label>Status</label>
+        <select name="status">
+            <option value="available" {% if property.status == "available" %}selected{% endif %}>Available</option>
+            <option value="sold" {% if property.status  == "sold" %}selected{% endif %}>Sold</option>
+        </select>
+
+        <label>Replace Main Image</label>
+        <input type="file" name="main_image">
+
+        <button type="submit">Update Property</button>
+    </form>
+</div>
+{% endblock %}

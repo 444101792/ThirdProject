@@ -11,4 +11,5 @@ urlpatterns = [
     path('dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('verify/<int:pk>/<str:action>/', views.verify_property, name='verify_property'),
     path('all/', views.all_properties, name='all_properties'),
+    path('<int:pk>/edit/', views.edit_property, name='edit_property'),
 ]

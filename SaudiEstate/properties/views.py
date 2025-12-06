@@ -6,6 +6,8 @@ from .models import Favorite
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.mail import send_mail
 from django.conf import settings
+from inquiries.models import Inquiry, InquiryReply
+
 
 
 def property_detail(request, pk):
@@ -14,6 +16,10 @@ def property_detail(request, pk):
     is_favorited = False
     if request.user.is_authenticated:
         is_favorited = property.is_favorited_by(request.user)
+
+    inquiries = property.inquiries.select_related("sender").order_by("-created_at")
+    replies = InquiryReply.objects.filter(inquiry__property=property).order_by('created_at')
+
 
     related_properties = Property.objects.filter(
         Q(city=property.city) | 
@@ -24,10 +30,11 @@ def property_detail(request, pk):
     context = {
         'property': property,
         'related_properties': related_properties,
+        'inquiries': inquiries,
+        'replies': replies,  
         'is_favorited': is_favorited,
     }
     return render(request, 'properties/property.html', context)
-
 
 @login_required
 def toggle_favorite(request, pk):
@@ -95,8 +102,12 @@ def add_property(request):
             title_deed=title_deed,
             ownership_proof=ownership_proof,
             building_license=building_license,
-            verification_status='pending'
+            verification_status='pending',
+            purpose=request.POST.get("purpose"),
+            status="available",  
+
         )
+
 
         subject = f'New Property Listing Request: {property_obj.title}'
         message = f'A new property has been submitted by {request.user.username}.\n\nProperty: {property_obj.title}\nDeed Number: {property_obj.deed_number}\n\nPlease review it in the admin dashboard.'
@@ -151,5 +162,64 @@ def verify_property(request, pk, action):
 
 
 def all_properties(request):
-    properties = Property.objects.filter(verification_status='approved').order_by('-created_at')
-    return render(request, 'properties/all_properties.html', {'properties': properties})
+    properties = Property.objects.filter(
+        verification_status='approved',
+        status='available'  
+    )
+
+    sort_by = request.GET.get('sort')
+    if sort_by == "price_low":
+        properties = properties.order_by('price')
+    elif sort_by == "price_high":
+        properties = properties.order_by('-price')
+    elif sort_by == "newest":
+        properties = properties.order_by('-created_at')
+    elif sort_by == "oldest":
+        properties = properties.order_by('created_at')
+
+    prop_type = request.GET.get('type')
+    if prop_type:
+        properties = properties.filter(property_type=prop_type)
+
+    purpose = request.GET.get('purpose')
+    if purpose:
+        properties = properties.filter(purpose=purpose)
+
+    show_favs = request.GET.get('favorites')
+    if show_favs == "1" and request.user.is_authenticated:
+        properties = properties.filter(favorited_by__user=request.user)
+
+    return render(request, 'properties/all_properties.html', {
+        'properties': properties,
+    })
+@login_required
+def edit_property(request, pk):
+
+    if request.user.is_staff:
+        property_obj = get_object_or_404(Property, pk=pk)
+    else:
+        property_obj = get_object_or_404(Property, pk=pk, owner=request.user)
+
+    if request.method == 'POST':
+        property_obj.title = request.POST.get('title')
+        property_obj.description = request.POST.get('description')
+        property_obj.price = request.POST.get('price')
+        property_obj.area = request.POST.get('area')
+        property_obj.rooms = request.POST.get('rooms')
+        property_obj.bathrooms = request.POST.get('bathrooms')
+        property_obj.age = request.POST.get('age')
+        property_obj.purpose = request.POST.get('purpose')
+        property_obj.status = request.POST.get('status')
+        property_obj.city = request.POST.get('city')
+        property_obj.district = request.POST.get('district')
+        property_obj.location = request.POST.get('location')
+
+        if 'main_image' in request.FILES:
+            property_obj.main_image = request.FILES['main_image']
+
+        property_obj.save()
+
+        messages.success(request, "Property updated successfully!")
+        return redirect('users:profile')
+
+    return render(request, 'properties/edit_property.html', {"property": property_obj})
