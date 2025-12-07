@@ -12,6 +12,7 @@ class Property(models.Model):
         ('villa', 'Villa'),
         ('apartment', 'Apartment'),
         ('land', 'Land'),
+    
     )
 
     PROPERTY_PURPOSE_CHOICES = (

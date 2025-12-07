@@ -225,3 +225,65 @@
     background: #007a6d;
     transform: translateY(-2px);
 }
+
+
+
+.phone-input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd; 
+    border-radius: 10px;    
+    background: #fff;
+    margin-top: 6px;
+    margin-bottom: 14px;    
+    transition: all 0.3s ease;
+    overflow: hidden;       
+}
+
+.phone-input-group:focus-within {
+    border-color: #0c8c7b; 
+    box-shadow: 0 0 0 3px rgba(12, 140, 123, 0.1);
+}
+
+.country-select-box {
+    position: relative;
+    background: #f8f9fa; 
+    border-right: 1px solid #ddd;
+    min-width: 120px;    
+    display: flex;
+    align-items: center;
+}
+
+.minimal-select {
+    width: 100%;
+    padding: 12px 10px; 
+    border: none;
+    background: transparent;
+    appearance: none;      
+    -webkit-appearance: none;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 2;
+    color: #333;
+}
+
+.minimal-select:focus {
+    outline: none;
+}
+
+.country-select-box i {
+    position: absolute;
+    right: 10px;
+    font-size: 11px;
+    color: #666;
+    z-index: 1;
+    pointer-events: none; 
+}
+
+.edit-box input.phone-field {
+    border: none !important;
+    margin: 0 !important;
+    padding: 12px 15px;
+    box-shadow: none !important;
+    width: 100%;
+}

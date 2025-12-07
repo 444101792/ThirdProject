@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-wrapper">
+    <div class="container-fluid" style="max-width: 1200px;">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 style="color: #0d3c3c; font-weight: 700;">Admin Inbox</h2>
+            <span class="badge bg-secondary">{{ messages.count }} Messages</span>
+        </div>
+        
+        <div class="admin-table-wrapper">
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Message Preview</th>
+                            <th>Status</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for msg in messages %}
+                        <tr>
+                            <td style="white-space: nowrap; color: #666;">
+                                {{ msg.created_at|date:"M d, Y" }}
+                            </td>
+                            <td>
+                                <strong>{{ msg.user.username }}</strong>
+                            </td>
+                            <td>{{ msg.user.email }}</td>
+                            <td style="color: #555;">
+                                {{ msg.message|truncatechars:50 }}
+                            </td>
+                            <td>
+                                {% if msg.is_replied %}
+                                <span class="badge bg-success"><i class="fa-solid fa-check"></i> Replied</span>
+                                {% else %}
+                                <span class="badge bg-warning text-dark">Pending</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-end">
+                                <a href="{% url 'main:reply_message' msg.id %}" class="btn btn-sm btn-outline-primary" style="border-radius: 20px;">
+                                    {% if msg.is_replied %} View {% else %} Reply {% endif %}
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <i class="fa-regular fa-folder-open fa-3x mb-3"></i><br>
+                                No messages found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

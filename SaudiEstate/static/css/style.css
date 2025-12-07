@@ -131,12 +131,10 @@ html {
         display: none;
     }
 
-    .btn-text {
-        display: none;
-    }
-
+    .user-menu,
+    .btn-dashboard,
     .welcome-text {
-        display: none;
+        display: none !important;
     }
 
     .navbar-wrapper {
@@ -146,6 +144,32 @@ html {
 
     .menu-toggle {
         display: block;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: #0d3c3c;
+    }
+
+    .btn-add-property {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        margin-right: 0;
+        border: 1px solid #ddd;
+    }
+
+    .btn-text {
+        display: none;
+    }
+
+    .btn-add-property i {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .nav-right {
+        gap: 10px;
     }
 }
 
@@ -1892,4 +1916,59 @@ select.dark-input option {
     .social-icons {
         justify-content: center;
     }
+}
+
+.phone-input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    transition: border 0.3s;
+}
+
+.phone-input-group:focus-within {
+    border-color: #00c896;
+    box-shadow: 0 0 0 3px rgba(0, 200, 150, 0.1);
+}
+
+.country-select-box {
+    position: relative;
+    background: #f8f9fa;
+    border-right: 1px solid #e1e1e1;
+    display: flex;
+    align-items: center;
+    min-width: 110px;
+}
+
+.minimal-select {
+    width: 100%;
+    padding: 12px 10px;
+    border: none;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.minimal-select:focus {
+    outline: none;
+}
+
+.country-select-box i {
+    position: absolute;
+    right: 10px;
+    font-size: 10px;
+    color: #666;
+    z-index: 1;
+}
+
+.phone-field {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 12px 15px;
+    width: 100%;
 }
