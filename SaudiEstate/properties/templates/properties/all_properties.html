@@ -45,6 +45,15 @@
         </label>
         {% endif %}
 
+       <select name="city">
+            <option value="">All Cities</option>
+            {% for value, label in cities %}
+            <option value="{{ value }}" {% if request.GET.city == value %}selected{% endif %}>
+                {{ label }}
+            </option>
+            {% endfor %}
+        </select>
+
         <button type="submit" class="btn-filter">Apply</button>
 
     </form>

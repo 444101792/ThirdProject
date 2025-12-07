@@ -1,13 +1,14 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Property, VisitRequest
+from .models import Property, VisitRequest , PropertyImage
 from django.db.models import Q
 from .models import Favorite
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.mail import send_mail
 from django.conf import settings
-from inquiries.models import Inquiry, InquiryReply
+from inquiries.models import Inquiry, InquiryReply 
 from datetime import datetime, timedelta, date ,time
+from django.http import JsonResponse
 
 
 
@@ -36,22 +37,27 @@ def property_detail(request, pk):
         'is_favorited': is_favorited,
     }
     return render(request, 'properties/property.html', context)
-
 @login_required
 def toggle_favorite(request, pk):
     property_obj = get_object_or_404(Property, pk=pk)
     
     favorite = Favorite.objects.filter(user=request.user, property=property_obj).first()
+    status = ''
 
     if favorite:
         favorite.delete()
-        messages.success(request, "Removed from favorites.")
+        status = 'removed'
+        msg = "Removed from favorites."
     else:
         Favorite.objects.create(user=request.user, property=property_obj)
-        messages.success(request, "Added to favorites.")
+        status = 'added'
+        msg = "Added to favorites."
 
+    if request.method == "POST": 
+        return JsonResponse({'status': status, 'message': msg})
+
+    messages.success(request, msg)
     return redirect('properties:detail', pk=pk)
-
 
 @login_required
 def remove_favorite(request, fav_id):
@@ -64,9 +70,22 @@ def remove_favorite(request, fav_id):
 def is_admin(user):
     return user.is_authenticated and user.is_staff
 
-
 def add_property(request):
     if request.method == 'POST' and request.user.is_authenticated:
+   
+        deed_number = request.POST.get('deed_number')
+        
+        if Property.objects.filter(deed_number=deed_number).exists():
+            messages.error(request, "Error: A property with this Deed Number already exists.")
+            
+            context = {
+                'types': Property.PROPERTY_TYPE_CHOICES,
+                'cities': Property.CITIES,
+                'form_data': request.POST 
+            }
+            return render(request, 'properties/add_property.html', context)
+
+
         title = request.POST.get('title')
         property_type = request.POST.get('property_type')
         price = request.POST.get('price')
@@ -78,7 +97,6 @@ def add_property(request):
         rooms = request.POST.get('rooms')
         bathrooms = request.POST.get('bathrooms')
         age = request.POST.get('age')
-        deed_number = request.POST.get('deed_number')
 
         main_image = request.FILES.get('main_image')
         title_deed = request.FILES.get('title_deed')
@@ -106,9 +124,11 @@ def add_property(request):
             verification_status='pending',
             purpose=request.POST.get("purpose"),
             status="available",  
-
         )
-
+        
+        gallery_images = request.FILES.getlist('gallery_images') 
+        for image in gallery_images:
+            PropertyImage.objects.create(property=property_obj, image=image)
 
         subject = f'New Property Listing Request: {property_obj.title}'
         message = f'A new property has been submitted by {request.user.username}.\n\nProperty: {property_obj.title}\nDeed Number: {property_obj.deed_number}\n\nPlease review it in the admin dashboard.'
@@ -124,7 +144,6 @@ def add_property(request):
     }
 
     return render(request, 'properties/add_property.html', context)
-
 
 @user_passes_test(is_admin)
 def admin_dashboard(request):
@@ -168,6 +187,11 @@ def all_properties(request):
         status='available'  
     )
 
+    city = request.GET.get('city')
+    if city:
+        properties = properties.filter(city__iexact=city)
+
+
     sort_by = request.GET.get('sort')
     if sort_by == "price_low":
         properties = properties.order_by('price')
@@ -192,6 +216,10 @@ def all_properties(request):
 
     return render(request, 'properties/all_properties.html', {
         'properties': properties,
+        'cities': Property.CITIES,               
+        'types': Property.PROPERTY_TYPE_CHOICES, 
+        'purposes': Property.PROPERTY_PURPOSE_CHOICES, 
+
     })
 @login_required
 def edit_property(request, pk):

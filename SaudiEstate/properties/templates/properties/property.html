@@ -351,30 +351,36 @@
         }
     });
 </script>
-
 <script>
     function toggleFavorite(event, propertyId) {
-        event.preventDefault();
+        event.preventDefault(); 
         const favIcon = document.getElementById(`fav-icon-${propertyId}`);
+        
+        const url = `/properties/${propertyId}/favorite/`; 
 
-        fetch(`/properties/favorite/${propertyId}/`, {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'X-CSRFToken': '{{ csrf_token }}',
                 'Content-Type': 'application/json'
             }
         })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'added') {
-                    favIcon.innerHTML = 'favorite';
-                    favIcon.style.color = "red";
-                } else if (data.status === 'removed') {
-                    favIcon.innerHTML = 'favorite_border';
-                    favIcon.style.color = "";
-                }
-            })
-            .catch(error => console.error('Error:', error));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'added') {
+                favIcon.innerText = 'favorite'; 
+                favIcon.style.color = "red";    
+            } else if (data.status === 'removed') {
+                favIcon.innerText = 'favorite_border'; 
+                favIcon.style.color = "";      
+            }
+        })
+        .catch(error => console.error('Error:', error));
     }
 </script>
 

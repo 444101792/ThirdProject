@@ -18,9 +18,10 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
-    
-
     <link rel="stylesheet" href="{% static 'css/all_properties.css' %}">
+
+
+
 </head>
 
 <body>
@@ -58,9 +59,13 @@
             <div class="nav-right">
 
                 {% if user.is_authenticated %}
+                
                 {% if user.is_staff %}
                 <a href="{% url 'properties:admin_dashboard' %}" class="btn-dashboard" title="Admin Dashboard">
                     <i class="fa-solid fa-user-shield"></i>
+                </a>
+                <a href="{% url 'main:admin_inbox' %}" class="btn-dashboard" title="Inbox">
+                    <i class="fa-solid fa-envelope"></i>
                 </a>
                 {% endif %}
 
@@ -93,27 +98,42 @@
 
 
     <div class="mobile-menu-overlay"></div>
+<div class="mobile-menu">
+    <div class="mobile-close"><i class="fa-solid fa-xmark"></i></div>
 
-    <div class="mobile-menu">
-        <div class="mobile-close"><i class="fa-solid fa-xmark"></i></div>
+    <a href="{% url 'main:home' %}"><i class="fa-solid fa-house me-2"></i> Home</a>
+    <a href="{% url 'properties:all_properties' %}"><i class="fa-solid fa-city me-2"></i> Properties</a>
+    <a href="{% url 'main:about' %}"><i class="fa-solid fa-circle-info me-2"></i> About</a>
 
-        <a href="{% url 'main:home' %}">Home</a>
-        <a href="{% url 'properties:all_properties' %}">Properties</a>
-        <a href="{% url 'main:about' %}">About</a>
+    <hr style="border-color: #eee; margin: 15px 0;">
 
-        {% if user.is_authenticated %}
-        <a href="{% url 'users:profile' %}">Profile</a>
-        <a href="{% url 'users:logout' %}" class="logout-red">Logout</a>
-        {% else %}
-        <a href="{% url 'users:login' %}" class="btn-login-mobile">Login</a>
+    {% if user.is_authenticated %}
+        {% if user.is_staff %}
+        <a href="{% url 'properties:admin_dashboard' %}" style="color: #009688;">
+            <i class="fa-solid fa-user-shield me-2"></i> Admin Dashboard
+        </a>
+        <a href="{% url 'main:admin_inbox' %}" style="color: #009688;">
+            <i class="fa-solid fa-envelope me-2"></i> Inbox
+        </a>
         {% endif %}
-    </div>
 
+        <a href="{% url 'properties:my_visit_requests' %}">
+            <i class="fa-regular fa-calendar-check me-2"></i> My Visits
+        </a>
+        <a href="{% url 'users:profile' %}">
+            <i class="fa-regular fa-user me-2"></i> Profile
+        </a>
+        <a href="{% url 'users:logout' %}" class="logout-red">
+            <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Logout
+        </a>
+    {% else %}
+        <a href="{% url 'users:login' %}" class="btn-login-mobile">Login</a>
+    {% endif %}
+</div>
 
     {% block content %}{% endblock %}
 
     <script>
-        /* ===== NAVBAR ON SCROLL ===== */
         let lastScroll = 0;
         const navbar = document.querySelector(".navbar-wrapper");
 
@@ -131,7 +151,6 @@
     </script>
 
     <script>
-        /* ===== MOBILE MENU ===== */
         const menuToggle = document.querySelector(".menu-toggle");
         const mobileMenu = document.querySelector(".mobile-menu");
         const mobileOverlay = document.querySelector(".mobile-menu-overlay");
@@ -186,7 +205,7 @@
             <div class="footer-col">
                 <h4>Support</h4>
                 <ul>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{% url 'main:contact_us' %}">Contact Us</a></li>
                     <li><a href="#">Help Center</a></li>
                     <li><a href="#">Terms & Conditions</a></li>
                 </ul>

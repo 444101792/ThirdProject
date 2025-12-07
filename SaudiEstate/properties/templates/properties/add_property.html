@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <label>Purpose (Sale or Rent)</label>
-                <select name="purpose" required>
+                <select name="purpose" required class="dark-input">
                     <option value="sale">For Sale</option>
                     <option value="rent">For Rent</option>
                 </select>
@@ -106,10 +106,16 @@
 
             <h4 class="form-section-title mt-4"><i class="fa-solid fa-camera"></i> Media & Documents</h4>
 
-            <div class="form-group">
-                <label>Main Image (Cover)</label>
-                <input type="file" name="main_image" accept="image/*" required class="input-glass file-input">
-            </div>
+      <div class="form-group">
+    <label>Main Image (Cover)</label>
+    <input type="file" name="main_image" accept="image/*" required class="input-glass file-input">
+</div>
+
+<div class="form-group">
+    <label>Gallery Images (Select Multiple)</label>
+    <input type="file" name="gallery_images" multiple accept="image/*" class="input-glass file-input">
+    <small style="color: #aaa; display: block; margin-top: 5px;">You can select multiple photos at once.</small>
+</div>
 
             <div class="documents-area">
                 <p class="doc-note"><i class="fa-solid fa-shield-halved"></i> Verification Documents (Confidential)</p>
