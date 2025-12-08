@@ -12,7 +12,8 @@
     margin-top: -120px;
 
 }
-.about-hero .about-hero-content h1{
+
+.about-hero .about-hero-content h1 {
     color: white;
 }
 
@@ -313,3 +314,95 @@
     }
 }
 
+
+@media (max-width: 992px) {
+    .about-hero {
+        height: 50vh;
+        margin-top: -80px;
+        background-position: center;
+    }
+
+    .about-title {
+        font-size: 2.5rem;
+        padding: 0 20px;
+        line-height: 1.2;
+    }
+
+    .vision-section {
+        flex-direction: column-reverse;
+        gap: 30px;
+        margin: 40px 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .vision-text {
+        width: 100%;
+    }
+
+    .vision-text h2 {
+        font-size: 2rem;
+    }
+
+    .vision-img {
+        width: 100%;
+    }
+
+    .vision-img img {
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+        max-height: 300px;
+    }
+
+    .story-section {
+        margin: 60px 0;
+        padding: 0 20px;
+    }
+
+    .story-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .story-img {
+        width: 100%;
+        height: 250px;
+        border-radius: 12px;
+    }
+
+    .story-text {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0;
+        text-align: justify;
+        text-align-last: center;
+    }
+
+    .values-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .value-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .cta-section h2 {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .vision-img img {
+        height: 200px;
+    }
+}
