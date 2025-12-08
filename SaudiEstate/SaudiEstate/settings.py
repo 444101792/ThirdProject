@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-!+05n$e)siwe9yrsrvk_o^b&z^c4j@)a7x)n@9q7&smrfjo2f9
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://saudieatate.up.railway.app', 'https://*.vercel.app']
 
 
 # Application definition
