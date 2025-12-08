@@ -1,0 +1,42 @@
+[
+  {
+    "model": "inquiries.inquiry",
+    "pk": 16,
+    "fields": {
+      "sender": 10,
+      "property": 6,
+      "message": "Nice",
+      "created_at": "2025-12-07T00:26:54.319Z"
+    }
+  },
+  {
+    "model": "inquiries.inquiry",
+    "pk": 18,
+    "fields": {
+      "sender": 10,
+      "property": 6,
+      "message": "Hello",
+      "created_at": "2025-12-07T05:47:53.406Z"
+    }
+  },
+  {
+    "model": "inquiries.inquiryreply",
+    "pk": 10,
+    "fields": {
+      "inquiry": 16,
+      "sender": 9,
+      "message": "Thank you",
+      "created_at": "2025-12-07T00:31:50.550Z"
+    }
+  },
+  {
+    "model": "inquiries.inquiryreply",
+    "pk": 11,
+    "fields": {
+      "inquiry": 16,
+      "sender": 9,
+      "message": "test",
+      "created_at": "2025-12-07T00:44:21.025Z"
+    }
+  }
+]

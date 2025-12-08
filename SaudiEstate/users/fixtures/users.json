@@ -1,0 +1,98 @@
+[
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$tB3SIpEk5jRCa7jihcNl7h$8uC/Zy6rBTtg1rny5Ju1OGQLv5GiwzmdM3VNjNCFCOo=",
+      "last_login": "2025-12-08T05:53:07.810Z",
+      "is_superuser": true,
+      "username": "zsyz8",
+      "first_name": "Ziyad",
+      "last_name": "Saad",
+      "email": "zsyz8888@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2025-12-03T05:36:04Z",
+      "national_id": "123123123",
+      "phone_number": "+966+966535787847",
+      "country_code": "+966",
+      "city": "Dammam",
+      "profile_image": "users/profiles/WhatsApp_Image_2025-11-27_at_11_BZZbXV1.36.46_AM.jpeg",
+      "about": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$bX3uLl4jvvx9HmcLl3QciA$mitxrO9e5OcTI6j58b7MEXtv2WtZyeS6zkAH+/exXrw=",
+      "last_login": "2025-12-07T05:48:26.882Z",
+      "is_superuser": false,
+      "username": "zsyz",
+      "first_name": "Ziyad",
+      "last_name": "Alzahrani",
+      "email": "zsyz8335@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-12-06T22:24:26.468Z",
+      "national_id": "1116987171",
+      "phone_number": "+966535778335",
+      "country_code": "+966",
+      "city": "Riyadh",
+      "profile_image": "users/profiles/eilat-villas-001.jpg",
+      "about": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$3ynwi6RrSkBPsvis9VY7dg$MCWmKEqt0FerGHdqra/nliwjFW3wBaDOsE9fe37rMP0=",
+      "last_login": "2025-12-08T05:34:36.777Z",
+      "is_superuser": false,
+      "username": "zdreq",
+      "first_name": "Ziyad",
+      "last_name": "Alzahrani",
+      "email": "zdreq77@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-12-06T23:19:31.365Z",
+      "national_id": "10101010",
+      "phone_number": "+966+966+966+966504956279",
+      "country_code": "+966",
+      "city": "Jeddah",
+      "profile_image": "users/profiles/WhatsApp_Image_2025-10-26_at_7.41.19_PM.jpeg",
+      "about": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$kzmEzzNXUPDu0b6FTBEfgE$bUz4uuBGbgAzLcDEk7ktLF4Z2mAvcreqy9j10QaUp/o=",
+      "last_login": "2025-12-07T05:14:19.926Z",
+      "is_superuser": false,
+      "username": "ziyad",
+      "first_name": "Ahmed",
+      "last_name": "Saad",
+      "email": "zsyz7777@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-12-07T00:29:01.408Z",
+      "national_id": "123456789",
+      "phone_number": "+966553775755",
+      "country_code": "+966",
+      "city": "Riyadh",
+      "profile_image": "users/profiles/default.png",
+      "about": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

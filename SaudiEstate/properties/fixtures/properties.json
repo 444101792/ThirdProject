@@ -1,0 +1,336 @@
+[
+  {
+    "model": "properties.property",
+    "pk": 6,
+    "fields": {
+      "owner": 9,
+      "title": "Modern Smart Villa in Al-Malqa",
+      "description": "A brand new smart villa featuring a modern design with glass facades. Includes a private outdoor pool, spacious garden, and elevator foundation. High-end finishing with central AC and smart home system. Located near Anas Bin Malik Road.",
+      "city": "Riyadh",
+      "district": "Al Malqa",
+      "location": "https://goo.gl/maps/example1",
+      "price": "4500000.00",
+      "area": 450,
+      "rooms": 5,
+      "bathrooms": 6,
+      "age": 0,
+      "property_type": "villa",
+      "purpose": "sale",
+      "status": "available",
+      "main_image": "media/properties/main/salman-saqib-z6UAWpQAhXs-unsplash.jpg",
+      "title_deed": "media/properties/documents/Deed-of-Trust-Templates.Legal_.pdf",
+      "ownership_proof": "media/properties/documents/Deed-of-Trust-Templates_ttVJuER.Legal_.pdf",
+      "building_license": "",
+      "verification_status": "approved",
+      "created_at": "2025-12-06T22:47:45.730Z",
+      "deed_number": "5829102233",
+      "is_for_sale": true
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 7,
+    "fields": {
+      "owner": 9,
+      "title": "Luxury Apartment with Sea View",
+      "description": "Stunning 3-bedroom apartment with a panoramic view of the Red Sea. Located in a prestigious tower offering gym access, private parking, and 24/7 security. Walking distance to the Corniche and Red Sea Mall.",
+      "city": "Jeddah",
+      "district": "Al Ash Shati",
+      "location": "https://goo.gl/maps/example2",
+      "price": "120000.00",
+      "area": 180,
+      "rooms": 3,
+      "bathrooms": 3,
+      "age": 2,
+      "property_type": "apartment",
+      "purpose": "rent",
+      "status": "available",
+      "main_image": "media/properties/main/Luxury-Apartment-Sea-View-Blue-Lagoon-Loutraki-Type-1-9.jpg",
+      "title_deed": "media/properties/documents/Deed-of-Trust-Templates_AkkwD0d.Legal_.pdf",
+      "ownership_proof": "media/properties/documents/Deed-of-Trust-Templates_D88ZPZd.Legal_.pdf",
+      "building_license": "",
+      "verification_status": "approved",
+      "created_at": "2025-12-06T22:52:34.515Z",
+      "deed_number": "2299118833",
+      "is_for_sale": true
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 8,
+    "fields": {
+      "owner": 9,
+      "title": "Prime Residential Plot in Al-Narjis",
+      "description": "Excellent residential corner plot located in the heart of Al-Narjis district. Situated on two streets (20m North and 15m East). The soil is flat and ready for immediate construction. Strategically located near King Salman Road and the Airport. Perfect opportunity to build a luxury villa or duplexes.",
+      "city": "Riyadh",
+      "district": "Al Narjis",
+      "location": "https://goo.gl/maps/example4",
+      "price": "3200000.00",
+      "area": 800,
+      "rooms": 0,
+      "bathrooms": 0,
+      "age": 0,
+      "property_type": "land",
+      "purpose": "sale",
+      "status": "available",
+      "main_image": "media/properties/main/18080300_Modon-Riyadh-City_Master-plan_Aerial_View_1_20180929-scaled.jpg",
+      "title_deed": "media/properties/documents/Deed-of-Trust-Templates_ZMc63he.Legal_.pdf",
+      "ownership_proof": "media/properties/documents/Deed-of-Trust-Templates_SgiqMFu.Legal_.pdf",
+      "building_license": "",
+      "verification_status": "approved",
+      "created_at": "2025-12-06T23:07:19.107Z",
+      "deed_number": "3322114455",
+      "is_for_sale": true
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 9,
+    "fields": {
+      "owner": 9,
+      "title": "Ultra-Modern Smart Villa in Al-Yasmin",
+      "description": "Experience the pinnacle of luxury in this brand-new smart villa. Designed with a sleek glass facade and high ceilings to maximize natural light.\r\n\r\nKey Features: ò Smart Home System: Full control of lighting, AC, and security. ò Entertainment: Private outdoor overflow pool & landscaped garden. ò Interior: Double-height living room, elevator ready, and marble flooring. ò Master Suite: Massive bedroom with a walk-in closet and spa-like bathroom.",
+      "city": "Riyadh",
+      "district": "Al-Yasmin",
+      "location": "https://goo.gl/maps/modernvilla",
+      "price": "1500000.00",
+      "area": 450,
+      "rooms": 5,
+      "bathrooms": 6,
+      "age": 0,
+      "property_type": "villa",
+      "purpose": "sale",
+      "status": "available",
+      "main_image": "media/properties/main/file3237.jpg",
+      "title_deed": "media/properties/documents/Deed-of-Trust-Templates_1eOse41.Legal_.pdf",
+      "ownership_proof": "media/properties/documents/Deed-of-Trust-Templates_nCYVnsJ.Legal_.pdf",
+      "building_license": "",
+      "verification_status": "approved",
+      "created_at": "2025-12-06T23:17:00.661Z",
+      "deed_number": "5599887766",
+      "is_for_sale": true
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 10,
+    "fields": {
+      "owner": 10,
+      "title": "Ultra-Modern Smart Villa with Pool",
+      "description": "A masterpiece of modern architecture in Al-Yasmine district. This smart home features a stunning glass facade, double-height living room, and fully integrated automation system (lights, AC, security).\r\n\r\nFeatures: ò Private overflow pool with outdoor seating. ò Installed elevator (Italian engine). ò Central AC and marble flooring throughout. ò 10-year warranty on structure and plumbing.",
+      "city": "Riyadh",
+      "district": "Al Yasmine",
+      "location": "https://goo.gl/maps/modernvilla2",
+      "price": "2000000.00",
+      "area": 540,
+      "rooms": 7,
+      "bathrooms": 6,
+      "age": 1,
+      "property_type": "villa",
+      "purpose": "sale",
+      "status": "available",
+      "main_image": "media/properties/main/villa_ya_wmrI9hk.jpg",
+      "title_deed": "media/properties/documents/Deed-of-Trust-Templates_FUVamW6.Legal_.pdf",
+      "ownership_proof": "media/properties/documents/Deed-of-Trust-Templates_lL9CvUS.Legal_.pdf",
+      "building_license": "",
+      "verification_status": "approved",
+      "created_at": "2025-12-07T00:07:16.430Z",
+      "deed_number": "8899223311",
+      "is_for_sale": true
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 11,
+    "fields": {
+      "owner": 9,
+      "title": "villa in al malqa",
+      "description": "nnn",
+      "city": "Riyadh",
+      "district": "al malqa",
+      "location": "https://googlemaps.com",
+      "price": "3000000.00",
+      "area": 200,
+      "rooms": 3,
+      "bathrooms": 4,
+      "age": 2,
+      "property_type": "villa",
+      "purpose": "sale",
+      "status": "available",
+      "main_image": "media/properties/main/pexels-heyho-11701115.jpg",
+      "title_deed": "media/properties/documents/Deed-of-Trust-Templates_xYW5cYH.Legal_.pdf",
+      "ownership_proof": "media/properties/documents/Deed-of-Trust-Templates_5ZyZAv9.Legal_.pdf",
+      "building_license": "",
+      "verification_status": "approved",
+      "created_at": "2025-12-07T05:45:23.526Z",
+      "deed_number": "123456789",
+      "is_for_sale": true
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 3,
+    "fields": {
+      "property": 6,
+      "image": "properties/gallery/pexels-heyho-8146330.jpg"
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 4,
+    "fields": {
+      "property": 6,
+      "image": "properties/gallery/pexels-heyho-6970068.jpg"
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 5,
+    "fields": {
+      "property": 7,
+      "image": "properties/gallery/image-4-1210x680.jpg"
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 6,
+    "fields": {
+      "property": 7,
+      "image": "properties/gallery/image-1-1210x680.jpg"
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 7,
+    "fields": {
+      "property": 9,
+      "image": "properties/gallery/eilat-villas-001.jpg"
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 8,
+    "fields": {
+      "property": 9,
+      "image": "properties/gallery/eilat-villas-003.jpg"
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 9,
+    "fields": {
+      "property": 10,
+      "image": "properties/gallery/pexels-heyho-11701115.jpg"
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 10,
+    "fields": {
+      "property": 10,
+      "image": "properties/gallery/pexels-heyho-11701116.jpg"
+    }
+  },
+  {
+    "model": "properties.visitrequest",
+    "pk": 2,
+    "fields": {
+      "requester": 10,
+      "property": 6,
+      "visit_date": "2025-12-08",
+      "visit_time": "03:27:00",
+      "status": "approved",
+      "created_at": "2025-12-07T00:27:33.442Z"
+    }
+  },
+  {
+    "model": "properties.visitrequest",
+    "pk": 3,
+    "fields": {
+      "requester": 11,
+      "property": 6,
+      "visit_date": "2025-12-08",
+      "visit_time": "03:27:00",
+      "status": "rejected",
+      "created_at": "2025-12-07T00:30:19.394Z"
+    }
+  },
+  {
+    "model": "properties.visitrequest",
+    "pk": 4,
+    "fields": {
+      "requester": 11,
+      "property": 6,
+      "visit_date": "2025-12-08",
+      "visit_time": "15:27:00",
+      "status": "approved",
+      "created_at": "2025-12-07T00:30:41.634Z"
+    }
+  },
+  {
+    "model": "properties.visitrequest",
+    "pk": 5,
+    "fields": {
+      "requester": 10,
+      "property": 6,
+      "visit_date": "2025-12-08",
+      "visit_time": "21:11:00",
+      "status": "approved",
+      "created_at": "2025-12-07T05:10:54.753Z"
+    }
+  },
+  {
+    "model": "properties.visitrequest",
+    "pk": 6,
+    "fields": {
+      "requester": 11,
+      "property": 9,
+      "visit_date": "2025-12-08",
+      "visit_time": "21:11:00",
+      "status": "rejected",
+      "created_at": "2025-12-07T05:13:32.853Z"
+    }
+  },
+  {
+    "model": "properties.visitrequest",
+    "pk": 7,
+    "fields": {
+      "requester": 11,
+      "property": 6,
+      "visit_date": "2025-12-08",
+      "visit_time": "21:20:00",
+      "status": "approved",
+      "created_at": "2025-12-07T05:17:16.286Z"
+    }
+  },
+  {
+    "model": "properties.visitrequest",
+    "pk": 8,
+    "fields": {
+      "requester": 10,
+      "property": 6,
+      "visit_date": "2025-12-08",
+      "visit_time": "08:48:00",
+      "status": "approved",
+      "created_at": "2025-12-07T05:48:13.030Z"
+    }
+  },
+  {
+    "model": "properties.favorite",
+    "pk": 13,
+    "fields": {
+      "user": 9,
+      "property": 8,
+      "created_at": "2025-12-07T00:32:32.637Z"
+    }
+  },
+  {
+    "model": "properties.favorite",
+    "pk": 14,
+    "fields": {
+      "user": 10,
+      "property": 6,
+      "created_at": "2025-12-07T05:47:23.829Z"
+    }
+  }
+]
